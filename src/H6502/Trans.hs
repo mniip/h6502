@@ -11,6 +11,7 @@ import Data.Word
 import H6502.Env
 import H6502.State
 
+-- | The 6502 monad transformer: encapsulates the state and the environment of a 6502 cpu, parametrised by the monad under which the memory operates, for example @'IO'@ or @'State' Memory@. Basically it is a @'ReaderT' 'H6502Environment' ('StateT' 'H6502State' m) a@, and the instances are identical.
 newtype H6502T m a = H6502T { runH6502T :: H6502Environment m -> H6502State -> m (a, H6502State) }
 
 instance Functor m => Functor (H6502T m) where

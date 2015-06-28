@@ -13,6 +13,7 @@ import H6502.State
 import H6502.Trans
 import H6502.Util
 
+-- | Map of all opcode behaviors. All 'Nothing's correspond to unspecified opcodes.
 opcodeMap :: Monad m => Array Word8 (Maybe (H6502T m ()))
 opcodeMap = array (0x00, 0xFF) [
         (0x00, Just $ do
